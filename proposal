@@ -17,6 +17,7 @@ xgboost: defined own objective
 4.Software
 Pandas dataframe, xgboost, scikit-learn
 Missing value processing, data preprocessing, grid search
+SAS Viya(http://www.sas.com/en_us/software/viya.html)
 
 5. Papers to read
 Chawla, Nitesh V., et al. "SMOTE: synthetic minority over-sampling technique." Journal of artificial intelligence research 16 (2002): 321-357.
@@ -32,3 +33,6 @@ Cross Validation, grid search and machine learning pipeline
 After dimension reduction, Fit data in a single machine
 Test several sampling methods
 Build simple machine learning pipeline and submit the result of test data in Kaggle 
+
+train_test = train_test.sort_values(by=['index']).drop(['index'], axis=1)
+train = train_test.iloc[:ntrain, :]http://www.sas.com/en_us/software/viya.html
