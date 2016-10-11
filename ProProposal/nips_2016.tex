@@ -69,9 +69,9 @@ The data source is an ongoing Kaggle competition: Bosch Production Line Performa
 
 \section{Project Idea}
 
-To solve this binary classification problem, we will follow the general machine learning pipeline. The first step is to generate new features from raw data(including stratifying and sampling). Then select machine models and do hyperparameter selection (grid search, bayes search, etc.). Last, ensemble several models based on train data and make a prediction of test data.
+To solve this binary classification problem, we will follow the general machine learning pipeline. The first step is to generate new features from raw data(including stratifying and sampling). Then build machine model and do hyperparameter selection (grid search, bayes search, etc.). Last, ensemble several models based on train data and make a prediction of test data.
 
-We will focus on the following areas: feature engineering, sampling and machine learning model. For feature engineering, we will do data exploration and feature reduction, the size of raw data is large(15.4GB) and doesn't fit into a single machine without feature reduction. The goal is to fit important features into a single memory with 16GB memory. For sampling, we will testify different methods such as upsampling, downsampling and smote to process imbalanced data.  The samples are highly imbalanced(6879:1176868).For machine learning model, gradient boosting tree is popular in Kaggle competitions for structured data. We will firstly use gradient boosting tree and then compare its performance with other machine learning models. Moreover, the shortcoming of gradient boosting tree is speed, it is kind of slow compared to random forest. We will testify three implementations of speeding up gradient boosting tree: Xgboost, FastBDT and SAS Viya. We want to get some insights how to improve the performance of  gradient boosting tree for imbalanced data.
+We will focus on feature engineering, sampling and machine learning model. For feature engineering, we will do data exploration and feature reduction, the size of raw data is large(15.4GB) and doesn't fit into a single machine without feature reduction. The goal is to fit important features into a single memory with 16GB memory. For sampling, we will testify different methods such as upsampling, downsampling and SMOTE to process the highly imbalanced data(6879:1176868). For machine learning model, we will firstly use gradient boosting tree and then compare its performance with other machine learning models. We will testify three implementations of speeding up gradient boosting tree: Xgboost, FastBDT and SAS Viya. We want to get some insights how to improve the performance of gradient boosting tree for imbalanced data.
 
 \section{Software}
 
@@ -79,7 +79,7 @@ python open source libraries: pandas, scikit-learn, matplotlib
 
 gradient boosting tree libraries: xgboost and FastBDT
 
-cloud platform: SAS Viya
+cloud platform: SAS Viya()
 
 \section{Papers to read}
 
