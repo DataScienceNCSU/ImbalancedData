@@ -34,7 +34,7 @@
 % author name.
 
 \author{
-    P-1:  Xi Yang, Liang Dong, Weijie Zhou, Yeojin Kim
+    P-1: \ Xi Yang \ Liang Dong \ Weijie Zhou \ Yeojin Kim
 }
 
 \begin{document}
@@ -48,9 +48,9 @@ The data from an ongoing Kaggle competition: Bosch Production Line Performance (
 
 \section{Project Idea}
 
-This project has two challenges: 1) The size of raw data is large(15.4GB) and cannot directly fit into a single machine. We will do data exploration and feature reduction to fit important features into a single memory with 16GB memory. 2) The raw data is highly imbalanced (6879:1176868). We will testify different methods such as upsampling, downsampling and SMOTE to do the sampling.
+This project has two challenges: 1) The size of raw data is large(15.4GB) and cannot directly fit into a single machine. We will do data exploration and feature reduction to fit important features into a single memory with 16GB memory. 2) The raw data is highly imbalanced (6879:1176868). We will utilize different methods such as upsampling, downsampling and SMOTE to do the sampling.
 
-Following the above two procedures, we will then train the machine learning models with gradient boosting tree, and then compare its performance with other speeding up gradient boosting tree models, including Xgboost, FastBDT and SAS Viya. 
+Following the above two procedures, we will then train the machine learning models with gradient boosting tree, and then compare its performance with other speeding up gradient boosting tree models, including Xgboost, FastBDT and SAS Viya.
 
 %To solve this binary classification problem, we will follow the general machine learning pipeline. The first step is to generate new features from raw data(including stratifying and sampling). Then build machine model and do hyperparameter selection (grid search, bayes search, etc.). Last, ensemble several models based on train data and make a prediction of test data.
 
@@ -58,11 +58,11 @@ Following the above two procedures, we will then train the machine learning mode
 
 \section{Software}
 
-python open source libraries: pandas, scikit-learn, matplotlib, python API for SAS Viya (SAS cloud platform)
+Python open source libraries: pandas, scikit-learn, matplotlib, python API for SAS Viya (SAS cloud platform)
 
-gradient boosting tree libraries: xgboost and FastBDT, gradient boosting tree in SAS Viya
+Gradient boosting tree libraries: xgboost and FastBDT, gradient boosting tree in SAS Viya
 
-\section{Papers to read}
+\section{Papers to Read}
 
 %[1] Chawla, Nitesh V., et al.(2002) SMOTE: synthetic minority over-sampling technique. {\it Journal of artificial intelligence research}, , pp.\ 321--357.
 
@@ -72,7 +72,7 @@ gradient boosting tree libraries: xgboost and FastBDT, gradient boosting tree in
 
 
 
-\section{Teammate and work division}
+\section{Teammate and Work Division}
 
 Xi \& Yeojin: Data exploration and feature reduction, sampling
 
@@ -86,7 +86,7 @@ Weijie \& Liang: Tree building, hyperparameter optimization
 
 % Yeojin: Data exploration and feature reduction for date data, upsampling and downsampling
 
-\section{Midterm milestone}
+\section{Midterm Milestone}
 Do feature engineering and sampling of raw data, generate submission in Kaggle by SAS Viya platform, single machine version xgboost and FastBDT.
 
 \end{document}
