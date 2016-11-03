@@ -53,24 +53,13 @@ function [Xtrain, Xtest] = sampling (datafile, pRatioTrain, nRatioTrain, nRatioT
     csvwrite(outfname, Xtrain);
     fprintf('%s\n', outfname);
 
-    % reference ID for training
-    outfnameid = strsplit(outfname, '.');
-    outfnameid = strcat(outfnameid{1}, '_id.', outfnameid{2});
-    csvwrite(outfnameid, pXtrain(:,1));
-    fprintf('%s\n', outfnameid);
-
     
     % testing data: randomly sampled positive + negative 
     if (pRatioTrain < 1) % if pRatioTrain == 1, there is no positive data for testing
         outfname = strcat(fname{1},'_p',num2str(pNumTest),'_n',num2str(nNumTest),'.', fname{2});
         csvwrite(outfname, Xtest);
         fprintf('%s\n', outfname);
-        
-        % reference ID for testing
-        outfnameid = strsplit(outfname, '.');
-        outfnameid = strcat(outfnameid{1}, '_id.', outfnameid{2});
-        csvwrite(outfnameid, pXtest(:,1));
-        fprintf('%s\n', outfnameid);
+
     end
     
 end
