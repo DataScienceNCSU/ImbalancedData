@@ -17,7 +17,7 @@ function [Xtrain, Xtest] = sampling (datafile, pRatioTrain, nRatioTrain, nRatioT
     pNumTrain = floor(pNum * pRatioTrain);      % the number of sampled postives for training
     nNumTrain = floor(pNumTrain * nRatioTrain); % the number of sampled negatives for training
     
-    pNumTest = pNum - pNumTrain;         % the number of sampled positive for testing
+    pNumTest = pNum - pNumTrain;                % the number of sampled positive for testing
     nNumTest = floor(pNumTest * nRatioTest);    % the number of sampled negative for testing
     
     fname = strsplit(datafile,'.');
@@ -40,22 +40,37 @@ function [Xtrain, Xtest] = sampling (datafile, pRatioTrain, nRatioTrain, nRatioT
 
     Xprand = randperm(pNum);
     Xnrand = randperm(nNum);
-    Xtrain = [Xpos(Xprand(1:pNumTrain),:); Xneg(Xprand(1:nNumTrain),:)];
-    Xtest = [Xpos(Xprand(pNumTrain+1:pNumTest),:); Xneg(Xnrand(nNumTrain+1:nNumTest),:)];
-
-    csvwrite('pos_randomID.csv', Xprand'); % for reference later
-    csvwrite('neg_randomID.csv', Xnrand');
+    pXtrain = Xpos(Xprand(1:pNumTrain),:);
+    nXtrain = Xneg(Xprand(1:nNumTrain),:);
+    pXtest = Xpos(Xprand(pNumTrain+1:pNum),:);
+    nXtest = Xneg(Xnrand(nNumTrain+1:nNumTrain+nNumTest),:);
+    
+    Xtrain = [pXtrain; nXtrain];
+    Xtest = [pXtest; nXtest];
 
     % training data: randomly sampled positive + negative 
     outfname = strcat(fname{1},'_p',num2str(pNumTrain),'_n',num2str(nNumTrain),'.',fname{2});
     csvwrite(outfname, Xtrain);
     fprintf('%s\n', outfname);
 
+    % reference ID for training
+    outfnameid = strsplit(outfname, '.');
+    outfnameid = strcat(outfnameid{1}, '_id.', outfnameid{2});
+    csvwrite(outfnameid, pXtrain(:,1));
+    fprintf('%s\n', outfnameid);
+
+    
     % testing data: randomly sampled positive + negative 
     if (pRatioTrain < 1) % if pRatioTrain == 1, there is no positive data for testing
         outfname = strcat(fname{1},'_p',num2str(pNumTest),'_n',num2str(nNumTest),'.', fname{2});
         csvwrite(outfname, Xtest);
         fprintf('%s\n', outfname);
+        
+        % reference ID for testing
+        outfnameid = strsplit(outfname, '.');
+        outfnameid = strcat(outfnameid{1}, '_id.', outfnameid{2});
+        csvwrite(outfnameid, pXtest(:,1));
+        fprintf('%s\n', outfnameid);
     end
-   
+    
 end
