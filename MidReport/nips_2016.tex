@@ -88,9 +88,12 @@ Following the above two procedures, we will then train the machine learning mode
 Some kagglers report that there is magic feature in the competition which will improve the performance in public board from 0.3 to 0.4. The magic feature comes from id and there is a debate if it is a leak. The leak is something that was introduced during data manipulation, either by data owners or by Kaggle. In essence, the leak is an unintentional tipping of the final outcome by those who know the outcome. We've had plenty of leaks that satisfy this definition.  In this competition, the id column has leak information and we will use the information.
 
 \subsection{Optimizing probabilities for best MCC}
-The criteria for the competition is Matthews correlation coefficient, the equation to calculate it is as following. We will yield the threshold that yields the best MCC score
+The criteria for the competition is Matthews correlation coefficient, the equation to calculate it is as following. We will yield the threshold that yields the best MCC score.
 
 $MCC =\frac{TP \times TN-FP\times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}$
+
+The steps are as following: ordering distinct probabilities, computing TP/TN when assuming the threshold for each distinct probability, computing the MCC
+, returning the probability row with the maximum MCC.
 
 \subsection{Grid Search}
 For gradient boosting tree, we need to do hyperparameter optimization for tree number, learning rate and other parameters. we tuning or a learning algorithm, usually with the goal of optimizing a measure of the algorithm's performance on an independent data set. In this case it is mcc.  The traditional way of performing hyperparameter optimization has been grid search, or a parameter sweep, which is simply an exhaustive searching through a manually specified subset of the hyperparameter space of a learning algorithm
