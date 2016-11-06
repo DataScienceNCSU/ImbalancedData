@@ -1,0 +1,92 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading nips_2016
+%
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2016}
+
+\usepackage[final]{nips_2016}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+% \usepackage[final]{nips_2016}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+\title{Binary Classification of Imbalanced data from Bosch Production Line}
+
+% The \author macro works with any number of authors. There are two
+% commands used to separate the names and addresses of multiple
+% authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to
+% break the lines. Using \AND forces a line break at that point. So,
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
+% on the second line, try using \AND instead of \And before the third
+% author name.
+
+\author{
+    P-1:  Xi Yang, Liang Dong, Weijie Zhou, Yeojin Kim
+}
+
+\begin{document}
+% \nipsfinalcopy is no longer used
+
+\maketitle
+
+\section{Data Set}
+
+The data from an ongoing Kaggle competition: Bosch Production Line Performance (\url{https://www.kaggle.com/c/bosch-production-line-performance/data}). The data represents measurements of parts as they move through Bosch's production lines and it is a binary classification problem. The raw data has three types of feature: numerical, categorical, and date.
+
+\section{Project Idea}
+
+This project has two challenges: 1) The size of raw data is large(15.4GB) and cannot directly fit into a single machine. We will do data exploration and feature reduction to fit important features into a single memory with 16GB memory. 2) The raw data is highly imbalanced (6879:1176868). We will testify different methods such as upsampling, downsampling and SMOTE to do the sampling.
+
+Following the above two procedures, we will then train the machine learning models with gradient boosting tree, and then compare its performance with other speeding up gradient boosting tree models, including Xgboost, FastBDT and SAS Viya. 
+
+%To solve this binary classification problem, we will follow the general machine learning pipeline. The first step is to generate new features from raw data(including stratifying and sampling). Then build machine model and do hyperparameter selection (grid search, bayes search, etc.). Last, ensemble several models based on train data and make a prediction of test data.
+
+%We will focus on feature engineering, sampling and machine learning model. For feature engineering, we will do data exploration and feature reduction, the size of raw data is large(15.4GB) and doesn't fit into a single machine without feature reduction. The goal is to fit important features into a single memory with 16GB memory. For sampling, we will testify different methods such as upsampling, downsampling and SMOTE to process the highly imbalanced data(6879:1176868). For machine learning model, we will firstly use gradient boosting tree and then compare its performance with other machine learning models. We will testify three implementations of speeding up gradient boosting tree: Xgboost, FastBDT and SAS Viya. We want to get some insights how to improve the performance of gradient boosting tree for imbalanced data.
+
+\section{Software}
+
+python open source libraries: pandas, scikit-learn, matplotlib, python API for SAS Viya (SAS cloud platform)
+
+gradient boosting tree libraries: xgboost and FastBDT, gradient boosting tree in SAS Viya
+
+\section{Papers to read}
+
+%[1] Chawla, Nitesh V., et al.(2002) SMOTE: synthetic minority over-sampling technique. {\it Journal of artificial intelligence research}, , pp.\ 321--357.
+
+[1] Tianqi Chen,\ \& Carlos Guestrin. \ (2016) XGBoost: A Scalable Tree Boosting System. {\it KDD.}
+
+[2] Keck T. \ (2016) A speed-optimized and cache-friendly implementation of stochastic gradient-boosted decision trees for multivariate classification {\it arXiv preprint arXiv}: 1609.06119.
+
+
+
+\section{Teammate and work division}
+
+Xi \& Yeojin: Data exploration and feature reduction, sampling
+
+Weijie \& Liang: Tree building, hyperparameter optimization
+
+% Xi: Data exploration and feature reduction for categorical data, SMOTE
+
+% Liang: SAS Viya machine learning pipeline, Tree building for imbalanced data
+
+% Weijie: Employ and compare xgboost and FastBDT, hyperparameter optimization
+
+% Yeojin: Data exploration and feature reduction for date data, upsampling and downsampling
+
+\section{Midterm milestone}
+Do feature engineering and sampling of raw data, generate submission in Kaggle by SAS Viya platform, single machine version xgboost and FastBDT.
+
+\end{document}
